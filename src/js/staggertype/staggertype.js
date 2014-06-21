@@ -46,7 +46,7 @@ var StaggerType = (function() {
     function enterFrame( time ) {
 
         setTimeout(function() {
-            
+
             update();
             render();
 
