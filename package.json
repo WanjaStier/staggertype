@@ -1,0 +1,25 @@
+{
+  "name": "StaggerType",
+  "description": "",
+  "version": "0.0.1",
+  "dependencies": {
+    "grunt"                         : "*",
+    "grunt-autoprefixer"            : "*",
+    "grunt-contrib-connect"         : "*",
+    "grunt-contrib-copy"            : "*",
+    "grunt-contrib-clean"           : "*",
+    "grunt-contrib-jshint"          : "*",
+    "grunt-contrib-sass"            : "*",
+    "grunt-contrib-uglify"          : "*",
+    "grunt-contrib-watch"           : "*",
+    "grunt-jsonlint"                : "*",
+    "grunt-karma"                   : "*",
+    "grunt-newer"                   : "*",
+    "grunt-notify"                  : "*",
+    "grunt-scriptlinker"            : "*",
+    "matchdep"                      : "*",
+    "grunt-angular-templates"       : "*",
+    "grunt-pngmin"                  : "*",
+    "assemble"                      : "*"
+  }
+}
