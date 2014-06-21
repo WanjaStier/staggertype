@@ -9,14 +9,18 @@
         <meta name="description" content="StaggerType" />
         <meta name="keywords" content="akqa, shopping, basket" />
         <meta name="revisit-after" content="30 days" />
-      
-      <!--  <link href="./assets/css/styles.css" media="screen" rel="stylesheet" type="text/css" />-->
+
+       <link href="./assets/css/styles.css" media="screen" rel="stylesheet" type="text/css" />
 
       <script type="text/javascript">
 
           window.onload = function() {
 
-              var options = {shit:true};
+              var options = {
+                  fps:60,
+                  autoStart: true
+
+              };
               var element = document.querySelector('.el');
               var staggerType = new StaggerType( element, options );
 
@@ -35,10 +39,6 @@
             .</p>
 
     </div>
-
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.8/plugins/CSSPlugin.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.8/easing/EasePack.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.8/TweenLite.min.js"></script>
     <script src="./js/vendor/animationframe.js"></script>
     <script src="./js/staggertype/staggertype.js"></script>
 

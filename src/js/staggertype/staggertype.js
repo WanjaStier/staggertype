@@ -1,5 +1,8 @@
 /**
+ * MC StaggerType in da house!
+ *
  * @author wanja.stier
+ *
  */
 var StaggerType = (function() {
 
@@ -28,6 +31,8 @@ var StaggerType = (function() {
     var index = 0;
 
     var animationFrame;
+
+    var observers = [];
 
 
     /**
@@ -84,7 +89,7 @@ var StaggerType = (function() {
 
         chars = this.el.innerHTML;
 
-        this.el.innerHTML = "";
+        this.el.removeChild( this.el.firstChild );
 
         this.el.style.visibility = "visible";
 
@@ -98,6 +103,7 @@ var StaggerType = (function() {
     }
 
 
+
     var p = StaggerType.prototype = {
 
         constructor: StaggerType,
@@ -109,9 +115,15 @@ var StaggerType = (function() {
             timeBased           : true,
             autoStart           : true,
             fps                 : 60,
+            duration            : 2000,
             leadCharacter       : '|',
             uppercase           : false,
             characters          : 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?'
+        },
+
+        Events: {
+            FADE_IN_COMPLETE : 'StaggerType::fadeInComplete',
+            FADE_OUT_COMPLETE: 'StaggerType::fadeOutComplete'
         },
 
         show: function() {
@@ -123,6 +135,31 @@ var StaggerType = (function() {
                 startTime = Date.now();
             }
             enterFrame(0);
+        },
+
+        on: function(topic, observer) {
+            observers[topic] || (observers[topic] = []);
+            observers[topic].push(observer);
+        },
+
+        off: function(topic, observer) {
+            if (!observers[topic])
+                return;
+
+            var index = observers[topic].indexOf(observer);
+
+            if (~index) {
+                observers[topic].splice(index, 1);
+            }
+        },
+
+        emit: function(topic, message) {
+            if (!this.observers[topic])
+                return;
+
+            for (var i = this.observers[topic].length - 1; i >= 0; i--) {
+                this.observers[topic][i](message)
+            };
         }
     }
 
