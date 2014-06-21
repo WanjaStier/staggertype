@@ -43,19 +43,22 @@ var StaggerType = (function() {
         }
     }
 
-    function enterFrame() {
+    function enterFrame( time ) {
 
-        update();
-        render();
+        setTimeout(function() {
+            
+            update();
+            render();
 
-        if( index >= chars.length ) {
+            if( index >= chars.length ) {
 
-            window.cancelAnimationFrame( animationFrame );
+                window.cancelAnimationFrame( animationFrame );
 
-        } else {
+            } else {
 
-            animationFrame = window.requestAnimationFrame( enterFrame );
-        }
+                animationFrame = window.requestAnimationFrame( enterFrame );
+            }
+        }, 1000 / p.options.fps)
 
     }
 
@@ -119,7 +122,7 @@ var StaggerType = (function() {
             } else {
                 startTime = Date.now();
             }
-            frame();
+            enterFrame(0);
         }
     }
 
