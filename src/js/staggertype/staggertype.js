@@ -26,6 +26,8 @@ var StaggerType = (function() {
 
     var delta = null;
 
+    var now;
+
     var then = null;
 
     var index = 0;
@@ -52,7 +54,7 @@ var StaggerType = (function() {
 
         setTimeout(function() {
 
-            update();
+            update(time);
             render();
 
             if( index >= chars.length ) {
@@ -67,14 +69,24 @@ var StaggerType = (function() {
 
     }
 
-    function update() {
+    function update(time) {
 
-        index+=10;
+
+        now = getNow();
+        delta = now - then;
+
+
+        var speed = 5 * 60 * delta / 1000;
+
+        index = (index - chars.length) /17;
+
+        then = now;
+
     }
 
     function render() {
 
-        var ch = chars.substring( index, 10);
+        var ch = chars.substring( 0, index);
 
         var node = document.createTextNode( ch );
 
@@ -100,6 +112,11 @@ var StaggerType = (function() {
             p.show();
         }
 
+    }
+
+
+    function getNow() {
+        return window.performance.now ? window.performance.now : Date.now();
     }
 
 
@@ -129,36 +146,46 @@ var StaggerType = (function() {
         show: function() {
 
             //record start time
-            if (window.performance.now) {
-                startTime = window.performance.now();
-            } else {
-                startTime = Date.now();
-            }
+            startTime = getNow();
+
             enterFrame(0);
         },
 
-        on: function(topic, observer) {
-            observers[topic] || (observers[topic] = []);
-            observers[topic].push(observer);
+        hide: function() {
+
         },
 
-        off: function(topic, observer) {
-            if (!observers[topic])
+        dispose: function() {
+
+        },
+
+        /**
+         * http://bumbu.ru/javascript-observer-publish-subscribe-pattern/
+         * @param type
+         * @param observer
+         */
+        subscribe: function(type, observer) {
+            observers[type] || (observers[topic] = []);
+            observers[type].push(observer);
+        },
+
+        unsubscribe: function(type, observer) {
+            if (!observers[type])
                 return;
 
-            var index = observers[topic].indexOf(observer);
+            var index = observers[type].indexOf(observer);
 
             if (~index) {
-                observers[topic].splice(index, 1);
+                observers[type].splice(index, 1);
             }
         },
 
-        emit: function(topic, message) {
-            if (!this.observers[topic])
+        emit: function(type, message) {
+            if (!this.observers[type])
                 return;
 
             for (var i = this.observers[topic].length - 1; i >= 0; i--) {
-                this.observers[topic][i](message)
+                this.observers[type][i](message)
             };
         }
     }
