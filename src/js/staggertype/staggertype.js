@@ -28,13 +28,15 @@ var StaggerType = (function() {
 
     var now;
 
-    var then = null;
+    var then = 0;
 
     var index = 0;
 
     var animationFrame;
 
     var observers = [];
+
+    var result;
 
 
     /**
@@ -55,7 +57,7 @@ var StaggerType = (function() {
         setTimeout(function() {
 
             update(time);
-            render();
+
 
             if( index >= chars.length ) {
 
@@ -72,26 +74,45 @@ var StaggerType = (function() {
     function update(time) {
 
 
-        now = getNow();
-        delta = now - then;
+        var timePassed = getNow() - startTime;
 
+        var progress = timePassed / p.options.duration;
 
-        var speed = 5 * 60 * delta / 1000;
+        if (progress > 1) {
+            progress = 1
+        }
 
-        index = (index - chars.length) /17;
+        var delta = bounceEaseOut(progress)
 
-        then = now;
+        render( delta );
 
     }
 
-    function render() {
+    function render( delta ) {
 
-        var ch = chars.substring( 0, index);
+        result = (chars.length-0) * delta;
 
-        var node = document.createTextNode( ch );
+        p.el.innerHTML = chars.substr(0, Math.ceil(result))
 
-        p.el.appendChild( node );
     }
+
+    function bounce(progress) {
+        for(var a = 0, b = 1, result; 1; a += b, b /= 2) {
+            if (progress >= (7 - 4 * a) / 11) {
+                return -Math.pow((11 - 6 * a - 11 * progress) / 4, 2) + Math.pow(b, 2);
+            }
+        }
+    }
+
+
+    function makeEaseOut(delta) {
+        return function(progress) {
+            return 1 - delta(1 - progress)
+        }
+    }
+
+    var bounceEaseOut = makeEaseOut(bounce)
+
 
 
     function init( options ) {
@@ -116,7 +137,7 @@ var StaggerType = (function() {
 
 
     function getNow() {
-        return window.performance.now ? window.performance.now : Date.now();
+        return window.performance.now ? window.performance.now() : Date.now();
     }
 
 
@@ -132,7 +153,7 @@ var StaggerType = (function() {
             timeBased           : true,
             autoStart           : true,
             fps                 : 60,
-            duration            : 2000,
+            duration            : 5000,
             leadCharacter       : '|',
             uppercase           : false,
             characters          : 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?'
