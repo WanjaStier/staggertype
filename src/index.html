@@ -19,7 +19,8 @@
               var options = {
                   fps:60,
                   autoStart: true,
-                  duration:1000
+                  duration:1.5,
+                  ease: 'easeInOutCubic'
               };
               var element = document.querySelector('.el');
               var staggerType = new StaggerType( element, options );

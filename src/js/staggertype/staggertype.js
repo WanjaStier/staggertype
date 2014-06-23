@@ -24,11 +24,13 @@ var StaggerType = (function() {
 
     var startTime = null;
 
-    var delta = null;
+    var easingFunction;
 
-    var now;
+    var iteration = 0;
 
-    var then = 0;
+    var progress;
+
+    var totalIterations;
 
     var index = 0;
 
@@ -36,7 +38,6 @@ var StaggerType = (function() {
 
     var observers = [];
 
-    var result;
 
 
     /**
@@ -56,12 +57,14 @@ var StaggerType = (function() {
 
         setTimeout(function() {
 
-            update(time);
+            update();
+            render();
 
-
-            if( index >= chars.length ) {
+            if( progress >= 1 ) {
 
                 window.cancelAnimationFrame( animationFrame );
+
+                console.log( 'done')
 
             } else {
 
@@ -71,48 +74,22 @@ var StaggerType = (function() {
 
     }
 
-    function update(time) {
+    function update() {
 
+        progress = iteration / totalIterations;
 
-        var timePassed = getNow() - startTime;
+        index = easingFunction( iteration, 0, chars.length, totalIterations );
 
-        var progress = timePassed / p.options.duration;
+        iteration++;
 
-        if (progress > 1) {
-            progress = 1
-        }
-
-        var delta = bounceEaseOut(progress)
-
-        render( delta );
 
     }
 
-    function render( delta ) {
+    function render() {
 
-        result = (chars.length-0) * delta;
-
-        p.el.innerHTML = chars.substr(0, Math.ceil(result))
+        p.el.innerHTML = chars.substr(0, Math.ceil(index))
 
     }
-
-    function bounce(progress) {
-        for(var a = 0, b = 1, result; 1; a += b, b /= 2) {
-            if (progress >= (7 - 4 * a) / 11) {
-                return -Math.pow((11 - 6 * a - 11 * progress) / 4, 2) + Math.pow(b, 2);
-            }
-        }
-    }
-
-
-    function makeEaseOut(delta) {
-        return function(progress) {
-            return 1 - delta(1 - progress)
-        }
-    }
-
-    var bounceEaseOut = makeEaseOut(bounce)
-
 
 
     function init( options ) {
@@ -153,7 +130,8 @@ var StaggerType = (function() {
             timeBased           : true,
             autoStart           : true,
             fps                 : 60,
-            duration            : 5000,
+            duration            : 1,
+            ease                : 'easeOutQuart',
             leadCharacter       : '|',
             uppercase           : false,
             characters          : 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?'
@@ -168,6 +146,12 @@ var StaggerType = (function() {
 
             //record start time
             startTime = getNow();
+
+            easingFunction = StaggerType.Easing[ p.options.ease ];
+
+      //      p.el.options = p.el.options
+
+            totalIterations = p.options.duration * p.options.fps;
 
             enterFrame(0);
         },
