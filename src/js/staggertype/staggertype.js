@@ -118,7 +118,6 @@ var StaggerType = (function() {
     }
 
 
-
     var p = StaggerType.prototype = {
 
         constructor: StaggerType,
