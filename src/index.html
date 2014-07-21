@@ -25,6 +25,9 @@
               };
               var element = document.querySelector('.el');
               var staggerType = new StaggerType( element, options );
+                  staggerType.subscribe( staggerType.Events.FADE_IN_COMPLETE, function() {
+                      console.log( 'yeah man')
+                  } )
 
 
           }

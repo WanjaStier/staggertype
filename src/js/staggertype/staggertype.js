@@ -1,7 +1,6 @@
 /**
- *
- * @author wanja.stier
- *
+ * StaggerType.js
+ * Released under terms of the MIT license: http://wanja.mit-license.org/
  */
 var StaggerType = (function() {
 
@@ -45,8 +44,6 @@ var StaggerType = (function() {
 
     var observers = [];
 
-
-
     /**
      * override default options with user defined options
      *
@@ -71,7 +68,7 @@ var StaggerType = (function() {
 
                 window.cancelAnimationFrame( animationFrame );
 
-                console.log( 'done')
+                p.emit( p.Events.FADE_IN_COMPLETE );
 
             } else {
 
@@ -136,7 +133,6 @@ var StaggerType = (function() {
 
     }
 
-
     function getNow() {
         return window.performance.now ? window.performance.now() : Date.now();
     }
@@ -183,7 +179,19 @@ var StaggerType = (function() {
         },
 
         dispose: function() {
+            pause();
+            observers = [];
+            animationFrame = null;
+        },
 
+        pause: function() {
+            if( animationFrame ) {
+                window.cancelAnimationFrame( animationFrame );
+            }
+        },
+
+        resume: function() {
+            animationFrame = window.requestAnimationFrame( enterFrame );
         },
 
         /**
@@ -192,7 +200,7 @@ var StaggerType = (function() {
          * @param observer
          */
         subscribe: function(type, observer) {
-            observers[type] || (observers[topic] = []);
+            observers[type] || (observers[type] = []);
             observers[type].push(observer);
         },
 
@@ -208,11 +216,11 @@ var StaggerType = (function() {
         },
 
         emit: function(type, message) {
-            if (!this.observers[type])
+            if (!observers[type])
                 return;
 
-            for (var i = this.observers[topic].length - 1; i >= 0; i--) {
-                this.observers[type][i](message)
+            for (var i = observers[type].length - 1; i >= 0; i--) {
+                observers[type][i](message)
             };
         }
     }
