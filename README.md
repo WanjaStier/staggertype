@@ -17,18 +17,17 @@ example HTML markup:
 ```
 
 ```javascript
-var options = {
-  fps:60,
-  autoStart: true,
-  duration:1.5,
-  scrambleText:true,
-  ease: 'easeOutSine'
-};
+
 var element = document.querySelector('.el');
-var staggerType = new StaggerType( element, options );
-    staggerType.subscribe( staggerType.Events.FADE_IN_COMPLETE, function() {
-                      console.log( 'done showing')
-                  } )
+
+// instantiate a StaggerType instance, passing the text element and overriding some default options.
+// see below for a list of all possible options
+var staggerType = new StaggerType( element, {duration:1.5, ease: 'easeOutSine'} );
+    staggerType.subscribe( staggerType.Events.FADE_IN_COMPLETE, onAnimationComplete)
+    
+var onAnimationComplete = function() {
+    //do stuff
+}
 ```
 ##Options
 
