@@ -34,3 +34,18 @@ var staggerType = new StaggerType( element, options );
 | fps     | Number      |   60 | frames per second. Lower numbers will cause the animation to play less smoothly
 | scrambleText | Boolean     |    true | Show airport display style random letter effect
 | characters | string | ABCDEFGHIJK LMNOPQRSTUVWX YZabcdefgh ijklmnop qrstuvwxyz0123456789 | string of characters to be used for random letter effect
+
+##Options
+###show()
+Starts the animation if ```autoStart:false```
+###pause()
+Pauses the animation
+###resume()
+resumes the animation if paused.
+###subscribe( type (string), handler (function) )
+adds an event listener to staggertype
+###unsubscribe( type (string), handler (function) )
+
+##Events
+##StaggerType::fadeInComplete
+dispatched when the animation has finished playing
