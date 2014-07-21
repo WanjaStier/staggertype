@@ -2,6 +2,10 @@ StaggerType.js
 =========
 Displays animated text by showing character by character. Can also display a string of random characters to create an old airport/train station display effect
 
+### Download
+
+[Minified](https://github.com/WanjaStier/staggertype/raw/master/dist/staggertype.min.js) (~2kb gzipped)
+
 ### Usage:
 StaggerType can be applied to any HTML element containing text
 example HTML markup:
