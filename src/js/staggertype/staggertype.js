@@ -1,6 +1,6 @@
-/**
+/**!
  * StaggerType.js
- * Released under terms of the MIT license: http://wanja.mit-license.org/
+ * Released under the terms of the MIT license: http://wanja.mit-license.org/
  */
 var StaggerType = (function() {
 
