@@ -52,7 +52,7 @@ adds an event listener to staggertype
 dispatched when the animation has finished playing
 
 ##Easing
-Use one of the following easing methods:
+Use one of the easing methods below. A demo of each easing type can be found [here](http://www.robertpenner.com/easing/easing_demo.html)
 
 ####linearEase
 ####easeInQuad
