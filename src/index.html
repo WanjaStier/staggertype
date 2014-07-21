@@ -19,8 +19,9 @@
               var options = {
                   fps:60,
                   autoStart: true,
-                  duration:1.5,
-                  ease: 'easeInOutQuint'
+                  duration:1,
+                  scrambleText:true,
+                  ease: 'easeOutSine'
               };
               var element = document.querySelector('.el');
               var staggerType = new StaggerType( element, options );
@@ -35,9 +36,7 @@
     <body>
     <div class="container">
 
-        <p class="el">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla varius nisl a nulla venenatis tempor. Integer volutpat nibh et metus varius, nec euismod metus vestibulum. Quisque sollicitudin augue at adipiscing dictum. Quisque pharetra, libero ac lacinia lacinia, nisl nisl lobortis odio, vel suscipit arcu erat at nisl. Cras facilisis urna lorem, quis laoreet justo tincidunt et. Phasellus tempor facilisis condimentum. Suspendisse luctus, lorem et porttitor scelerisque, felis ante aliquet lorem, eget tincidunt dui nibh nec nisi.
-
-            .</p>
+        <p class="el">Lorem ipsum dolor sit amet.</p>
 
     </div>
     <script src="./js/vendor/animationframe.js"></script>

@@ -1,5 +1,4 @@
 /**
- * MC StaggerType in da house!
  *
  * @author wanja.stier
  *
@@ -33,6 +32,14 @@ var StaggerType = (function() {
     var totalIterations;
 
     var index = 0;
+
+    var str1 = '';
+
+    var str2 = '';
+
+    var str3 = '';
+
+    var currentText = '';
 
     var animationFrame;
 
@@ -82,13 +89,30 @@ var StaggerType = (function() {
 
         iteration++;
 
+        if(p.options.scrambleText) {
+            str1 = "";
+            str2 = chars.substr(0, index);
+            str3 = chars.substr(index);
+
+            var len = str3.length;
+            var i = 0;
+            for ( ; i < len; i++) {
+                str1 += p.options.characters.substr( Math.floor( Math.random()*p.options.characters.length ),1 );
+            }
+
+            currentText = str2 + str1;
+        }
 
     }
 
     function render() {
 
-        p.el.innerHTML = chars.substr(0, Math.ceil(index))
+        if ( p.options.scrambleText ){
+            p.el.innerHTML = currentText;
 
+        } else {
+            p.el.innerHTML = chars.substr(0, Math.ceil(index))
+        }
     }
 
 
@@ -133,6 +157,7 @@ var StaggerType = (function() {
             ease                : 'easeOutQuart',
             leadCharacter       : '|',
             uppercase           : false,
+            scrambleText        : true,
             characters          : 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?'
         },
 
@@ -147,8 +172,6 @@ var StaggerType = (function() {
             startTime = getNow();
 
             easingFunction = StaggerType.Easing[ p.options.ease ];
-
-      //      p.el.options = p.el.options
 
             totalIterations = p.options.duration * p.options.fps;
 
