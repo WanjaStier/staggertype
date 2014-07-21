@@ -33,13 +33,13 @@ var onAnimationComplete = function() {
 
 
 | Option        | Type           | Default  | Description
-| ------------- |:-------------:| -----:| -------------
+| ------------- |-------------| -----| -------------
 | autoStart      | Boolean | true | Wether or not to automatically start animating on instantiation
 | fps     | Number      |   60 | frames per second. Lower numbers will cause the animation to play less smoothly
 | scrambleText | Boolean     |    true | Show airport display style random letter effect
 | characters | string | ABCDEFGHIJK LMNOPQRSTUVWX YZabcdefgh ijklmnop qrstuvwxyz0123456789 | string of characters to be used for random letter effect
 | ease | string | easeOutQuart | easing function to be applied to the animation
-
+| duration | Number | 1 |  the total duration of the text animation
 ##Methods
 ###show()
 Starts the animation if ```autoStart:false```
