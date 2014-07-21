@@ -1,4 +1,4 @@
-staggertype
+StaggerType.js
 ===========
 
-It staggers the shit out of your text
+Displays animated text by showing character by character. Can also display a string of random characters to create an old airport/train station display effect
