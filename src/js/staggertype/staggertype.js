@@ -1,5 +1,7 @@
 /*!
  * StaggerType.js
+ * Copyright © 2014 Wanja Stier
+ *
  * https://github.com/WanjaStier/staggertype
  *
  * Released under the terms of the MIT license: http://wanja.mit-license.org/

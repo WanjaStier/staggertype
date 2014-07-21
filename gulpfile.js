@@ -9,16 +9,17 @@ var PATHS = {
 }
 
 gulp.task('scripts', function() {
-    return gulp.src([   'src/js/staggertype/animationframe.js',
+    return gulp.src([
                         'src/js/staggertype/staggertype.js',
-                        'src/js/staggertype/staggertype.easing.js'])
+                        'src/js/staggertype/staggertype.easing.js',
+                        'src/js/staggertype/animationframe.js',])
         .pipe(plugins.jshint('.jshintrc'))
         .pipe(plugins.jshint.reporter('default'))
         .pipe(plugins.concat('staggertype.js'))
         .pipe(gulp.dest('./dist/'))
         .pipe(plugins.rename({suffix: '.min'}))
         .pipe(plugins.uglify({
-
+            preserveComments: 'some'
         }))
         .pipe(gulp.dest('./dist'))
         .pipe(plugins.notify({ message: 'Scripts task complete' }));
