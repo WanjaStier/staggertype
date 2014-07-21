@@ -54,25 +54,25 @@ dispatched when the animation has finished playing
 ##Easing
 Use one of the easing methods below. A demo of each easing type can be found [here](http://www.robertpenner.com/easing/easing_demo.html)
 
-#####linearEase
-#####easeInQuad
-#####easeOutQuad
-#####easeInOutQuad
-#####easeInCubic
-#####easeOutCubic
-#####easeInOutCubic
-#####easeInQuart
-#####easeOutQuart
-#####easeInOutQuart
-#####easeInQuint
-#####easeOutQuint
-#####easeInOutQuint
-#####easeInSine
-#####easeOutSine
-#####easeInOutSine
-#####easeInExpo
-#####easeOutExpo
-#####easeInOutExpo
-#####easeInCirc
-#####easeOutCirc
-#####easeInOutCirc
+* linearEase
+* easeInQuad
+* easeOutQuad
+* easeInOutQuad
+* easeInCubic
+* easeOutCubic
+* easeInOutCubic
+* easeInQuart
+* easeOutQuart
+* easeInOutQuart
+* easeInQuint
+* easeOutQuint
+* easeInOutQuint
+* easeInSine
+* easeOutSine
+* easeInOutSine
+* easeInExpo
+* easeOutExpo
+* easeInOutExpo
+* easeInCirc
+* easeOutCirc
+* easeInOutCirc
