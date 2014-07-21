@@ -47,5 +47,5 @@ adds an event listener to staggertype
 ###unsubscribe( type (string), handler (function) )
 
 ##Events
-##StaggerType::fadeInComplete
+###StaggerType::fadeInComplete
 dispatched when the animation has finished playing
