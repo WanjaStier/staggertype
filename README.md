@@ -35,7 +35,7 @@ var staggerType = new StaggerType( element, options );
 | scrambleText | Boolean     |    true | Show airport display style random letter effect
 | characters | string | ABCDEFGHIJK LMNOPQRSTUVWX YZabcdefgh ijklmnop qrstuvwxyz0123456789 | string of characters to be used for random letter effect
 
-##Options
+##Methods
 ###show()
 Starts the animation if ```autoStart:false```
 ###pause()
