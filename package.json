@@ -2,24 +2,15 @@
   "name": "StaggerType",
   "description": "",
   "version": "0.0.1",
-  "dependencies": {
-    "grunt"                         : "*",
-    "grunt-autoprefixer"            : "*",
-    "grunt-contrib-connect"         : "*",
-    "grunt-contrib-copy"            : "*",
-    "grunt-contrib-clean"           : "*",
-    "grunt-contrib-jshint"          : "*",
-    "grunt-contrib-sass"            : "*",
-    "grunt-contrib-uglify"          : "*",
-    "grunt-contrib-watch"           : "*",
-    "grunt-jsonlint"                : "*",
-    "grunt-karma"                   : "*",
-    "grunt-newer"                   : "*",
-    "grunt-notify"                  : "*",
-    "grunt-scriptlinker"            : "*",
-    "matchdep"                      : "*",
-    "grunt-angular-templates"       : "*",
-    "grunt-pngmin"                  : "*",
-    "assemble"                      : "*"
+  "devDependencies": {
+    "gulp": "^3.8.6",
+    "gulp-jshint": "^1.7.1",
+    "gulp-concat": "^2.3.3",
+    "gulp-uglify": "^0.3.1",
+    "gulp-clean": "^0.3.1",
+    "gulp-notify": "^1.4.0",
+    "gulp-newer": "^0.3.0",
+    "gulp-load-plugins": "^0.5.3",
+    "gulp-rename": "^1.2.0"
   }
 }

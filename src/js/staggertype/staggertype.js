@@ -1,5 +1,7 @@
-/**!
+/*!
  * StaggerType.js
+ * https://github.com/WanjaStier/staggertype
+ *
  * Released under the terms of the MIT license: http://wanja.mit-license.org/
  */
 var StaggerType = (function() {
@@ -57,7 +59,7 @@ var StaggerType = (function() {
         }
     }
 
-    function enterFrame( time ) {
+    function enterFrame() {
 
         setTimeout(function() {
 
@@ -74,7 +76,7 @@ var StaggerType = (function() {
 
                 animationFrame = window.requestAnimationFrame( enterFrame );
             }
-        }, 1000 / p.options.fps)
+        }, 1000 / p.options.fps);
 
     }
 
@@ -108,15 +110,12 @@ var StaggerType = (function() {
             p.el.innerHTML = currentText;
 
         } else {
-            p.el.innerHTML = chars.substr(0, Math.ceil(index))
+            p.el.innerHTML = chars.substr(0, Math.ceil(index));
         }
     }
 
 
     function init( options ) {
-
-        console.log( this.el );
-        console.log( this.options );
 
         chars = this.el.innerHTML;
 
@@ -205,8 +204,9 @@ var StaggerType = (function() {
         },
 
         unsubscribe: function(type, observer) {
-            if (!observers[type])
+            if (!observers[type]){
                 return;
+            }
 
             var index = observers[type].indexOf(observer);
 
@@ -216,14 +216,15 @@ var StaggerType = (function() {
         },
 
         emit: function(type, message) {
-            if (!observers[type])
+            if (!observers[type]){
                 return;
+            }
 
             for (var i = observers[type].length - 1; i >= 0; i--) {
-                observers[type][i](message)
-            };
+                observers[type][i](message);
+            }
         }
-    }
+    };
 
     return StaggerType;
 
