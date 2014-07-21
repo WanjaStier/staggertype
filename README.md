@@ -34,6 +34,7 @@ var staggerType = new StaggerType( element, options );
 | fps     | Number      |   60 | frames per second. Lower numbers will cause the animation to play less smoothly
 | scrambleText | Boolean     |    true | Show airport display style random letter effect
 | characters | string | ABCDEFGHIJK LMNOPQRSTUVWX YZabcdefgh ijklmnop qrstuvwxyz0123456789 | string of characters to be used for random letter effect
+| ease | string | easeOutQuart | easing function to be applied to the animation
 
 ##Methods
 ###show()
@@ -49,3 +50,29 @@ adds an event listener to staggertype
 ##Events
 ###StaggerType::fadeInComplete
 dispatched when the animation has finished playing
+
+##Easing
+Use one of the following easing methods:
+
+###linearEase
+###easeInQuad
+###easeOutQuad
+###easeInOutQuad
+###easeInCubic
+###easeOutCubic
+###easeInOutCubic
+###easeInQuart
+###easeOutQuart
+###easeInOutQuart
+###easeInQuint
+###easeOutQuint
+###easeInOutQuint
+###easeInSine
+###easeOutSine
+###easeInOutSine
+###easeInExpo
+###easeOutExpo
+###easeInOutExpo
+###easeInCirc
+###easeOutCirc
+###easeInOutCirc
