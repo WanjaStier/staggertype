@@ -12,7 +12,7 @@ gulp.task('scripts', function() {
     return gulp.src([
                         'src/js/staggertype/staggertype.js',
                         'src/js/staggertype/staggertype.easing.js',
-                        'src/js/staggertype/animationframe.js',])
+                        'src/js/staggertype/animationframe.js'])
         .pipe(plugins.jshint('.jshintrc'))
         .pipe(plugins.jshint.reporter('default'))
         .pipe(plugins.concat('staggertype.js'))

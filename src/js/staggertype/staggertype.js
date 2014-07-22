@@ -151,7 +151,7 @@ var StaggerType = (function() {
             autoStart           : true,
             fps                 : 60,
             duration            : 1,
-            ease                : 'easeOutQuart',
+            ease                : 'linearEase',
             leadCharacter       : '|',
             uppercase           : false,
             scrambleText        : true,
