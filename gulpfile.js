@@ -21,8 +21,8 @@ gulp.task('scripts', function() {
         .pipe(plugins.uglify({
             preserveComments: 'some'
         }))
-        .pipe(gulp.dest('./dist'))
-        .pipe(plugins.notify({ message: 'Scripts task complete' }));
+        .pipe(gulp.dest('./dist'));
+
 });
 
 

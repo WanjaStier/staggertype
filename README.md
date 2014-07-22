@@ -47,9 +47,9 @@ Starts the animation if ```autoStart:false```
 Pauses the animation
 ###resume()
 resumes the animation if paused.
-###subscribe( type (string), handler (function) )
+###on( type (string), handler (function) )
 adds an event listener to staggertype
-###unsubscribe( type (string), handler (function) )
+###off( type (string), handler (function) )
 
 ##Events
 ###StaggerType::fadeInComplete

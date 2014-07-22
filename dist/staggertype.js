@@ -72,7 +72,7 @@ var StaggerType = (function() {
 
                 window.cancelAnimationFrame( animationFrame );
 
-                p.emit( p.Events.FADE_IN_COMPLETE );
+                p.dispatchEvent( p.Events.FADE_IN_COMPLETE );
 
             } else {
 
@@ -195,17 +195,13 @@ var StaggerType = (function() {
             animationFrame = window.requestAnimationFrame( enterFrame );
         },
 
-        /**
-         * http://bumbu.ru/javascript-observer-publish-subscribe-pattern/
-         * @param type
-         * @param observer
-         */
-        subscribe: function(type, observer) {
+
+        on: function(type, observer) {
             observers[type] || (observers[type] = []);
             observers[type].push(observer);
         },
 
-        unsubscribe: function(type, observer) {
+        off: function(type, observer) {
             if (!observers[type]){
                 return;
             }
@@ -217,7 +213,7 @@ var StaggerType = (function() {
             }
         },
 
-        emit: function(type, message) {
+        dispatchEvent: function(type, message) {
             if (!observers[type]){
                 return;
             }
